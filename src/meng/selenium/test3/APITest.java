@@ -73,6 +73,15 @@ public class APITest {
 		JavascriptExecutor jsExecutor = (JavascriptExecutor)driver;
 		jsExecutor.executeScript("alert('hello selenium');");
 		
+		try {
+			// 截图
+			TakesScreenshot screenshot = (TakesScreenshot) driver;
+			File scrFile = screenshot.getScreenshotAs(OutputType.FILE);
+			FileUtils.copyFile(scrFile, new File("D:\\test.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		driver.get("http://www.baidu.com/");
 		// 根据id查找元素
 		WebElement webElement  = driver.findElement(By.id("kw"));
